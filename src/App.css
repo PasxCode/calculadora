@@ -1,6 +1,6 @@
 .App{
   padding: 15px;
-  background-color: #1b1b32;
+  background-color: #d9dbdb;
   font-family: Lato, sans-serif;
   display: flex;
   flex-wrap: wrap;
@@ -18,15 +18,15 @@
 }
 
 .logo{
-  height: 100px;
+  width: 400px;
   border-radius: 20px;
 }
 
 .contenedor-calculadora{
   width: 400px;
-  height: 600px;
+  height: 450px;
   padding: 14px;
-  background-color: darkgrey;
+  background-color: rgb(56, 54, 54);
   border: 5px solid white;
   border-radius: 20px;
 }

@@ -1,12 +1,12 @@
 .boton-contenedor{
-  height: 83px;
+  height: 60px;
   display: flex;
   flex: 1 1;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 38px;
-  background-color: #1b1b32;
+  font-size: 40px;
+  background-color: #85114b;
   color: white;
   border-radius: 25px;
   border: 2px solid white;
@@ -15,12 +15,12 @@
   user-select: none;
 }
 .boton-contenedor:hover{
-  background-color: blueviolet;
+  background-color: rgb(64, 13, 146);
 }
 
 .operador{
-  background-color: rgb(42, 80, 5);
+  background-color: rgb(109, 78, 32);
 }
 .operador:hover{
-  background-color: #f60;
+  background-color: rgb(31, 13, 1);
 }
