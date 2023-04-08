@@ -4,22 +4,42 @@ import logoApp from './imagenes/Logo_PASXCODE.png';
 import Boton from './componentes/Boton'
 import BotonBorrar from './componentes/BotonBorrar';
 import Pantalla from './componentes/Pantalla';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { evaluate, string } from 'mathjs';
 
 function App() {
 
-  const [input,setInput] = useState('');
+  let [input,setInput] = useState('');
 
   const agregarInput = valor => {
-    setInput(input+valor);
+
+    if ((valor==='+')||(valor==='-')||(valor==='*')||(valor==='/')){
+      for (let i=0;i<input.length;i++){
+        if ((input[i]==='+')||(input[i]==='/')||(input[i]==='*')||(input[i]==='-')){
+          return;
+        }
+      }
+    } //si introduzco operador y ya existe aborto.
+ 
+    if (valor==='.'){
+      let hayOperador=false;
+      let primerDecimal = false;
+      let segundoDecimal= false;
+      for (let i=0;i<input.length;i++){
+        if ((input[i]==='+')||(input[i]==='/')||(input[i]==='*')||(input[i]==='-')){
+            hayOperador=true;
+            primerDecimal=true;
+        }            
+        if ((input[i]==='.')&&(!primerDecimal)&&(!hayOperador)) {primerDecimal=true;}
+        if((input[i]==='.')&&(hayOperador)&&(!segundoDecimal)){segundoDecimal=true;}
+      }  
+      if((primerDecimal)&&(!hayOperador)){console.log("aborto if priemer deciamal"+primerDecimal+hayOperador);return;}
+      if((hayOperador)&&(segundoDecimal)){console.log("aborto if segundo decimal"+hayOperador+segundoDecimal);return;}  
+    } //si introduzco punto y no procede aborto...
+    
+    setInput(input+valor);//Insertamos el muevo valor si procede.
   };
 
-
-  useEffect(() => {
-    window.addEventListener("keydown", manejarKeyDown);
-    return () => window.removeEventListener("keydown", manejarKeyDown);
-  }, []);
 
   const manejarKeyDown = e => {
         /*
@@ -32,32 +52,34 @@ function App() {
             '/' =
             '*' = 
         */
-    if ((e.keyCode>47)&&(e.keyCode<58)) {
+    if ((e.keyCode>47)&&(e.keyCode<58)&&(!e.shiftKey)) {
       const tecla = string(e.keyCode-48);
-      console.log('ha pulsado la tecla '+tecla);
       setInput(input+tecla);
-      console.log('el valor de variable "input" es'+input);
     } else {
-      console.log("otra cosa");
+        if ((e.key===".")||(e.key==="+")||(e.key==="*")||(e.key==="-")||(e.key==="/")){
+          agregarInput(e.key);
+        }
+        else if ((e.key==="=")) {
+          calcularResultado();
+        }
     }
   }
 
   const calcularResultado = () => {
     if(input){
       try{
-       setInput(evaluate(input));
+          setInput(evaluate(input));
       } catch (error){
-        alert('Introduccion no válida.');
-        setInput('');
+          alert('No válido.');
+          setInput('');
       }
     }else{
-      alert('Ingrese valores correctos...');
       setInput('');
     }  
   }
 
   return (
-    <div className="App" onKeyDown={manejarKeyDown}>
+    <div className="App" tabIndex="0" onKeyDown={manejarKeyDown} >
       <div className='logo-contenedor'>
         <img
           src={logoApp}
