@@ -6,4 +6,5 @@ const botonBorrar = (props) => (
     {props.children}
   </div>
 );
+
 export default botonBorrar;

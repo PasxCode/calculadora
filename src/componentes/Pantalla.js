@@ -7,4 +7,5 @@ const Pantalla = (props) => (
     {props.input}
   </div>
 );
+
 export default Pantalla;

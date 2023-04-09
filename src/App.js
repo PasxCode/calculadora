@@ -42,17 +42,7 @@ function App() {
 
 
   const manejarKeyDown = e => {
-        /*
-         codigo de la tecla pulsada:
-            Enter = 13
-            Esc = 27
-            '0' = 48 ... '9' = 57
-            '+' =
-            '-' =
-            '/' =
-            '*' = 
-        */
-    if ((e.keyCode>47)&&(e.keyCode<58)&&(!e.shiftKey)) {
+    if ((e.keyCode>47)&&(e.keyCode<58)&&(!e.shiftKey)) { //Comprobamos si es un número.
       const tecla = string(e.keyCode-48);
       setInput(input+tecla);
     } else {

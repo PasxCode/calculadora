@@ -14,4 +14,5 @@ function Boton(props) {
     </div>
   ) 
 }
+
 export default Boton;
