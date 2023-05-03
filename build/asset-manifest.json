@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1dbe38be.css",
+    "main.js": "/static/js/main.c0e36020.js",
+    "static/media/Logo_PASXCODE.png": "/static/media/Logo_PASXCODE.75067e0a7e40732dc612.png",
+    "index.html": "/index.html",
+    "main.1dbe38be.css.map": "/static/css/main.1dbe38be.css.map",
+    "main.c0e36020.js.map": "/static/js/main.c0e36020.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1dbe38be.css",
+    "static/js/main.c0e36020.js"
+  ]
+}
